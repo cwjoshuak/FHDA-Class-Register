@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		364728FE9931E8833B56AC0A /* Pods_DACRegister.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F30BECC02CDA9C19283D7CA9 /* Pods_DACRegister.framework */; };
 		B2525CCB209D0B2F00ABCCF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2525CCA209D0B2F00ABCCF6 /* AppDelegate.swift */; };
 		B2525CCD209D0B2F00ABCCF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2525CCC209D0B2F00ABCCF6 /* ViewController.swift */; };
 		B2525CD0209D0B2F00ABCCF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2525CCE209D0B2F00ABCCF6 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		384389D613660777B5225E7F /* Pods-DACRegister.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DACRegister.release.xcconfig"; path = "Pods/Target Support Files/Pods-DACRegister/Pods-DACRegister.release.xcconfig"; sourceTree = "<group>"; };
 		B2525CC7209D0B2F00ABCCF6 /* DACRegister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DACRegister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2525CCA209D0B2F00ABCCF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2525CCC209D0B2F00ABCCF6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +24,8 @@
 		B2525CD1209D0B3000ABCCF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2525CD4209D0B3000ABCCF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B2525CD6209D0B3000ABCCF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECE1391FF31879EA5192F30C /* Pods-DACRegister.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DACRegister.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DACRegister/Pods-DACRegister.debug.xcconfig"; sourceTree = "<group>"; };
+		F30BECC02CDA9C19283D7CA9 /* Pods_DACRegister.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DACRegister.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				364728FE9931E8833B56AC0A /* Pods_DACRegister.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C6D04F580214E26EC184F34 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ECE1391FF31879EA5192F30C /* Pods-DACRegister.debug.xcconfig */,
+				384389D613660777B5225E7F /* Pods-DACRegister.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B2525CBE209D0B2F00ABCCF6 = {
 			isa = PBXGroup;
 			children = (
 				B2525CC9209D0B2F00ABCCF6 /* DACRegister */,
 				B2525CC8209D0B2F00ABCCF6 /* Products */,
+				2C6D04F580214E26EC184F34 /* Pods */,
+				D14EACE9B393877E2FE86B16 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +80,14 @@
 			path = DACRegister;
 			sourceTree = "<group>";
 		};
+		D14EACE9B393877E2FE86B16 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F30BECC02CDA9C19283D7CA9 /* Pods_DACRegister.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B2525CD9209D0B3000ABCCF6 /* Build configuration list for PBXNativeTarget "DACRegister" */;
 			buildPhases = (
+				F99743F4237C96D7098DE808 /* [CP] Check Pods Manifest.lock */,
 				B2525CC3209D0B2F00ABCCF6 /* Sources */,
 				B2525CC4209D0B2F00ABCCF6 /* Frameworks */,
 				B2525CC5209D0B2F00ABCCF6 /* Resources */,
+				9B7E39FDBF36FC0420884EF7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +155,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9B7E39FDBF36FC0420884EF7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DACRegister/Pods-DACRegister-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DACRegister/Pods-DACRegister-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F99743F4237C96D7098DE808 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DACRegister-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B2525CC3209D0B2F00ABCCF6 /* Sources */ = {
@@ -278,15 +343,13 @@
 		};
 		B2525CDA209D0B3000ABCCF6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECE1391FF31879EA5192F30C /* Pods-DACRegister.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YN83627A85;
 				INFOPLIST_FILE = DACRegister/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cwjoshuak.DACRegister;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -296,15 +359,13 @@
 		};
 		B2525CDB209D0B3000ABCCF6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 384389D613660777B5225E7F /* Pods-DACRegister.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YN83627A85;
 				INFOPLIST_FILE = DACRegister/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cwjoshuak.DACRegister;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
