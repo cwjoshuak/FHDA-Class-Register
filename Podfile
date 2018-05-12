@@ -7,4 +7,5 @@ target 'DACRegister' do
 
   # Pods for DACRegister
 pod 'Alamofire'
+pod 'SwiftyJSON', '~> 4.0'
 end
