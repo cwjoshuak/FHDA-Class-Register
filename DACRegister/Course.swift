@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct Course : Codable {
+public struct Course : Codable {
     enum Campus : String, Codable {
-        case FH
-        case DA
+        case fh
+        case da
     }
     enum Days : String, Codable {
         case M
