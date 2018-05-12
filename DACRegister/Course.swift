@@ -13,6 +13,7 @@ public struct Course : Codable {
         case fh
         case da
     }
+    
     enum Days : String, Codable {
         case M
         case T
@@ -22,22 +23,7 @@ public struct Course : Codable {
         case S
         case Su
     }
-    /*
-    CRN        | Course Number
-    course     | Course ID (format: [F0*][ID][Section ID][WYH]) see note
-    desc       | Short-form course description
-    campus     | Campus the section is held at
-    days       | Day(s) the section is held on (M, T, W, Th, F, S, U)
-    instructor | Professor for the section
-    room       | Room the section is held at
-    time       | Time for the section
-    start      | First date for the section
-    end        | Last date for the course
-    units      | Number of course units
-    seats      | Seats left in the course
-    wait_cap   | Waitlist capacity
-    wait_seats | Waitlist slots left in the course
- */
+
     var crn : Int
     var cid : Int
     var desc : String
@@ -53,6 +39,21 @@ public struct Course : Codable {
     var seats : Int
     var waitCap : Int
     var waitSeats : Int
-    
-
 }
+/*
+ CRN        | Course Number
+ course     | Course ID (format: [F0*][ID][Section ID][WYH]) see note
+ desc       | Short-form course description
+ campus     | Campus the section is held at
+ days       | Day(s) the section is held on (M, T, W, Th, F, S, U)
+ instructor | Professor for the section
+ room       | Room the section is held at
+ time       | Time for the section
+ start      | First date for the section
+ end        | Last date for the course
+ units      | Number of course units
+ seats      | Seats left in the course
+ wait_cap   | Waitlist capacity
+ wait_seats | Waitlist slots left in the course
+ */
+
