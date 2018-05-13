@@ -40,7 +40,7 @@ class RequestController {
                 ).joined(separator: "&")
             numParams = params.count
         }
-        
+
         Alamofire.request(urlString).validate().responseJSON { (response) in
             if let error = response.result.error {
                 print(error)

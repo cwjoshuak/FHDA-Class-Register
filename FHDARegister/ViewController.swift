@@ -34,14 +34,16 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         } else if pickerView == deptPicker {
             return deptArr.count
         } else if pickerView == coursePicker {
-            if component == 0 {
+            // TODO: implement coursePicker
+            
+            /*if component == 0 {
                 // section component
                 let row = deptPicker.selectedRow(inComponent: 0)
                 return (row < deptArr.count) ? deptArr[row].sections.count : 0
             } else if component == 1 {
                 // courses component
                 return courseArr.count
-            }
+            }*/
         }
         return 0 // shouldn't happen
     }
@@ -59,13 +61,21 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         } else if pickerView == deptPicker {
             return deptArr[row].name
         } else if pickerView == coursePicker {
-            let sectionRow = coursePicker.selectedRow(inComponent: 0)
-            return courseArr[sectionRow].cid
+            // TODO: implement coursePicker
+            
+            /*if component == 0 {
+                let dRow = deptPicker.selectedRow(inComponent: 0)
+                return deptArr[dRow].sections[row].sectionNum
+            } else if component == 1 {
+                let sectionRow = coursePicker.selectedRow(inComponent: 0)
+                return courseArr[sectionRow].cid
+            }*/
         }
         return nil
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == campusPicker {
+            print(row)
             switch(row) {
             case 0:
                 selectedCampus = Course.Campus.fh
@@ -75,10 +85,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
                 break
             }
             populateCourses(endpoint: .courseList(selectedCampus!.rawValue))
-            updatePicker(picker: 1)
+            //updatePicker(picker: 1)
         } else if pickerView == deptPicker {
             // assumes already populated sections (and courses)
-            
+            let params = ["dept" : deptArr[row].name]
+            populateCourses(endpoint: .getSingle(selectedCampus!.rawValue), params: params)
         }
         //populateCourses()
     }
@@ -93,7 +104,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         coursePicker.dataSource = self
         coursePicker.delegate = self
         populateCourses(endpoint: .courseList(selectedCampus!.rawValue))
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -106,16 +116,10 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         if let params = params {
             shard.request(endpoint, params: params) { (sections, dept, courses) in
                 if let dept = dept {
-                    self.textView.text! += "Dept: \(dept.name)\n"
-                    for section in dept.sections {
-                        self.textView.text! += "Section: \(section.sectionNum)\n"
-                        for course in section.courses {
-                            self.textView.text! += "Course: \(course.desc)\n\n"
-                        }
-                        self.textView.text! += "\n"
-                    }
-                    self.textView.text! += "\n\n"
+                    let index = self.deptPicker.selectedRow(inComponent: 0)
+                    self.deptArr[index] = dept
                 }
+                self.coursePicker.reloadAllComponents()
             }
         } else {
             // for courseList
@@ -127,21 +131,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
                         self.deptArr.append(Dept(section))
                     }
                 }
-            }
-            
-        }
-    }
-    func updatePicker(picker: Int) {
-        DispatchQueue.main.sync {
-            switch(picker) {
-            case 0:
-                self.campusPicker.reloadAllComponents()
-            case 1:
                 self.deptPicker.reloadAllComponents()
-            case 2:
-                self.coursePicker.reloadAllComponents()
-            default:
-                break
             }
         }
     }
