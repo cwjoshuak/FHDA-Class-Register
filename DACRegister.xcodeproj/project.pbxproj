@@ -8,15 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		364728FE9931E8833B56AC0A /* Pods_DACRegister.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F30BECC02CDA9C19283D7CA9 /* Pods_DACRegister.framework */; };
+		B250DFBE20A57F3500234530 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = B250DFBD20A57F3500234530 /* Course.swift */; };
+		B250DFC020A606C500234530 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B250DFBF20A606C500234530 /* Request.swift */; };
+		B250DFC220A6098D00234530 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B250DFC120A6098D00234530 /* Endpoints.swift */; };
 		B2525CCB209D0B2F00ABCCF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2525CCA209D0B2F00ABCCF6 /* AppDelegate.swift */; };
 		B2525CCD209D0B2F00ABCCF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2525CCC209D0B2F00ABCCF6 /* ViewController.swift */; };
 		B2525CD0209D0B2F00ABCCF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2525CCE209D0B2F00ABCCF6 /* Main.storyboard */; };
 		B2525CD2209D0B3000ABCCF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2525CD1209D0B3000ABCCF6 /* Assets.xcassets */; };
 		B2525CD5209D0B3000ABCCF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2525CD3209D0B3000ABCCF6 /* LaunchScreen.storyboard */; };
+		B2EE642B20A7A33000B48CD1 /* Dept.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EE642A20A7A33000B48CD1 /* Dept.swift */; };
+		B2EE642D20A7AFD300B48CD1 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EE642C20A7AFD300B48CD1 /* Section.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		384389D613660777B5225E7F /* Pods-DACRegister.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DACRegister.release.xcconfig"; path = "Pods/Target Support Files/Pods-DACRegister/Pods-DACRegister.release.xcconfig"; sourceTree = "<group>"; };
+		B250DFBD20A57F3500234530 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		B250DFBF20A606C500234530 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		B250DFC120A6098D00234530 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		B2525CC7209D0B2F00ABCCF6 /* DACRegister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DACRegister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2525CCA209D0B2F00ABCCF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2525CCC209D0B2F00ABCCF6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +32,8 @@
 		B2525CD1209D0B3000ABCCF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2525CD4209D0B3000ABCCF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B2525CD6209D0B3000ABCCF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2EE642A20A7A33000B48CD1 /* Dept.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Dept.swift; path = /Users/Joshyy/Desktop/DACRegister/DACRegister/Dept.swift; sourceTree = "<absolute>"; };
+		B2EE642C20A7AFD300B48CD1 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		ECE1391FF31879EA5192F30C /* Pods-DACRegister.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DACRegister.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DACRegister/Pods-DACRegister.debug.xcconfig"; sourceTree = "<group>"; };
 		F30BECC02CDA9C19283D7CA9 /* Pods_DACRegister.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DACRegister.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -49,6 +59,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B250DFC320A609AF00234530 /* Rest */ = {
+			isa = PBXGroup;
+			children = (
+				B250DFC120A6098D00234530 /* Endpoints.swift */,
+				B250DFBF20A606C500234530 /* Request.swift */,
+			);
+			name = Rest;
+			sourceTree = "<group>";
+		};
 		B2525CBE209D0B2F00ABCCF6 = {
 			isa = PBXGroup;
 			children = (
@@ -71,7 +90,11 @@
 			isa = PBXGroup;
 			children = (
 				B2525CCA209D0B2F00ABCCF6 /* AppDelegate.swift */,
+				B250DFBD20A57F3500234530 /* Course.swift */,
+				B2EE642A20A7A33000B48CD1 /* Dept.swift */,
+				B2EE642C20A7AFD300B48CD1 /* Section.swift */,
 				B2525CCC209D0B2F00ABCCF6 /* ViewController.swift */,
+				B250DFC320A609AF00234530 /* Rest */,
 				B2525CCE209D0B2F00ABCCF6 /* Main.storyboard */,
 				B2525CD1209D0B3000ABCCF6 /* Assets.xcassets */,
 				B2525CD3209D0B3000ABCCF6 /* LaunchScreen.storyboard */,
@@ -165,10 +188,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DACRegister/Pods-DACRegister-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -200,8 +225,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B250DFBE20A57F3500234530 /* Course.swift in Sources */,
 				B2525CCD209D0B2F00ABCCF6 /* ViewController.swift in Sources */,
+				B2EE642B20A7A33000B48CD1 /* Dept.swift in Sources */,
+				B2EE642D20A7AFD300B48CD1 /* Section.swift in Sources */,
+				B250DFC020A606C500234530 /* Request.swift in Sources */,
 				B2525CCB209D0B2F00ABCCF6 /* AppDelegate.swift in Sources */,
+				B250DFC220A6098D00234530 /* Endpoints.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,7 +379,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YN83627A85;
 				INFOPLIST_FILE = DACRegister/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cwjoshuak.DACRegister;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -365,7 +398,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YN83627A85;
 				INFOPLIST_FILE = DACRegister/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cwjoshuak.DACRegister;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
