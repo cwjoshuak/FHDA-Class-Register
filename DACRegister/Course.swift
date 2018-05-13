@@ -7,14 +7,16 @@
 //
 
 import Foundation
-
-public struct Course : Codable {
-    enum Campus : String, Codable {
-        case fh
-        case da
+import SwiftyJSON
+public struct Course {
+    
+    // MARK: Properties
+    enum Campus : String {
+        case fh = "FH"
+        case da = "DA"
     }
     
-    enum Days : String, Codable {
+    enum Days : String {
         case M
         case T
         case W
@@ -22,38 +24,89 @@ public struct Course : Codable {
         case F
         case S
         case Su
+        case TBA
     }
 
+    /// Course Number
     var crn : Int
-    var cid : Int
+    
+    /// Course ID (format: [F0***][ID][Section ID][WYZH]) see note
+    var cid : String
+    
+    /// Short-form course description
     var desc : String
+    
+    /// Campus the section is held at
     var campus : Campus
-    var days : [Days]
+    
+    /// Day(s) the section is held on (M, T, W, Th, F, S, U)
+    var days = [Days]()
+    
+    /// Professor for the section
     var instructor : String
-    var room : String?
+    
+    /// Room the section is held at
+    var room : String
+    
+    /// Status of the course [Open, Waitlist]
     var status : String
-    var time : String?
-    var startDate : String?
-    var endDate : String?
+    
+    /// Start time to End time for the course
+    var time : String
+    
+    /// First date for the course
+    var startDate : String
+    
+    /// Last date for the course
+    var endDate : String
+    
+    /// Number of course units
     var units : Double
+    
+    /// Seats left in the course
     var seats : Int
+    
+    /// Waitlist capacity
     var waitCap : Int
+    
+    /// Waitlist slots left in the course
     var waitSeats : Int
-}
-/*
- CRN        | Course Number
- course     | Course ID (format: [F0*][ID][Section ID][WYH]) see note
- desc       | Short-form course description
- campus     | Campus the section is held at
- days       | Day(s) the section is held on (M, T, W, Th, F, S, U)
- instructor | Professor for the section
- room       | Room the section is held at
- time       | Time for the section
- start      | First date for the section
- end        | Last date for the course
- units      | Number of course units
- seats      | Seats left in the course
- wait_cap   | Waitlist capacity
- wait_seats | Waitlist slots left in the course
- */
+    
+    // MARK: Initializer
+    
+    /**
+     Creates a single course
+     
+     - parameter args: expected to contain
+     crn, cid (as course), desc, campus, days, intsructor, room, status,
+     time, startDate, endDate, units, seats, waitCap, waitSeats
+     
+     */
 
+    init(_ args: JSON) {
+
+        crn = args["CRN"].intValue
+        cid = args["course"].stringValue
+        desc = args["desc"].stringValue
+        campus = Campus(rawValue: args["campus"].stringValue)!
+
+        let regex = try! NSRegularExpression(pattern: "(Su)|(TBA)|(Th)|(M)|(W)|(F)|(T)|(S)")
+        let result = regex.matches(in: args["days"].stringValue, range: NSRange(args["days"].stringValue.startIndex..., in: args["days"].stringValue)).map {
+            String(args["days"].stringValue[Range($0.range, in: args["days"].stringValue)!])
+        }
+        for day in result {
+            days.append(Course.Days(rawValue: day)!)
+        }
+        instructor = args["instructor"].stringValue
+        room = args["room"].stringValue
+        status = args["status"].stringValue
+        time = args["time"].stringValue
+        startDate = args["start"].stringValue
+        endDate = args["end"].stringValue
+        units = args["units"].doubleValue
+        seats = args["seats"].intValue
+        waitCap = args["wait_seats"].intValue
+        waitSeats = args["wait_cap"].intValue
+
+    }
+}
