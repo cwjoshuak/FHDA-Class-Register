@@ -1,4 +1,4 @@
-## FHDA Register (WIP)
+## FHDA Class Register (WIP)
 
 This is a simple application which grabs FHDA course data from `http://floof.li` and displays it.
 WARNING: It might crash.
