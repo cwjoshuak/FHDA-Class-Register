@@ -1,6 +1,6 @@
 //
 //  Dept.swift
-//  
+//  FHDA Class Register
 //
 //  Created by Joshua Kuan on 12/05/2018.
 //

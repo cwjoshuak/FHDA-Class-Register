@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  DACRegister
+//  FHDA Class Register
 //
 //  Created by Joshua Kuan on 04/05/2018.
 //  Copyright © 2018 Joshua Kuan. All rights reserved.
