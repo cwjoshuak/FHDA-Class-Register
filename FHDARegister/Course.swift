@@ -14,6 +14,8 @@ public struct Course {
     enum Campus : String {
         case fh = "FH"
         case da = "DA"
+        case fc = "FC"
+        case def = "DO"
     }
     
     enum Days : String {
@@ -28,49 +30,49 @@ public struct Course {
     }
 
     /// Course Number
-    var crn : Int
+    var crn: Int
     
     /// Course ID (format: [F0***][ID][Section ID][WYZH]) see note
-    var cid : String
+    var cid: String
     
     /// Short-form course description
-    var desc : String
+    var desc: String
     
     /// Campus the section is held at
-    var campus : Campus
+    var campus: Campus
     
     /// Day(s) the section is held on (M, T, W, Th, F, S, U)
     var days = [Days]()
     
     /// Professor for the section
-    var instructor : String
+    var instructor: String
     
     /// Room the section is held at
-    var room : String
+    var room: String
     
     /// Status of the course [Open, Waitlist]
-    var status : String
+    var status: String
     
     /// Start time to End time for the course
-    var time : String
+    var time: String
     
     /// First date for the course
-    var startDate : String
+    var startDate: String
     
     /// Last date for the course
-    var endDate : String
+    var endDate: String
     
     /// Number of course units
-    var units : Double
+    var units: Double
     
     /// Seats left in the course
-    var seats : Int
+    var seats: Int
     
     /// Waitlist capacity
-    var waitCap : Int
+    var waitCap: Int
     
     /// Waitlist slots left in the course
-    var waitSeats : Int
+    var waitSeats: Int
     
     // MARK: Initializer
     
