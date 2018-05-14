@@ -112,3 +112,20 @@ public struct Course {
 
     }
 }
+extension Course : CustomStringConvertible{
+    public var description: String {
+        var temp = "\(cid) : \(crn) : \(campus)\n\n"
+        temp += "Description: \(desc)\n"
+        temp += "Instructor: \(instructor)\n"
+        temp += "Room: \(room)\n"
+        temp += "Time : \(time)\n"
+        temp += "Start Date: \(startDate)\n"
+        temp += "End Date: \(endDate)\n"
+        temp += "Status: \(status)\n"
+        temp += "Units: \(units)\n"
+        temp += "Days: \(days)\n"
+        temp += "Waitlist Capacity: \(waitCap)\n"
+        temp += "Waitlist Seats: \(waitSeats)\n"
+        return temp
+    }
+}
