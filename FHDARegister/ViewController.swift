@@ -35,15 +35,15 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             return deptArr.count
         } else if pickerView == coursePicker {
             // TODO: implement coursePicker
-            
-            /*if component == 0 {
+            let deptRow = deptPicker.selectedRow(inComponent: 0)
+            if component == 0 {
                 // section component
-                let row = deptPicker.selectedRow(inComponent: 0)
-                return (row < deptArr.count) ? deptArr[row].sections.count : 0
+                return (deptRow < deptArr.count) ? deptArr[deptRow].sections.count : 0
             } else if component == 1 {
                 // courses component
-                return courseArr.count
-            }*/
+                let secRow = pickerView.selectedRow(inComponent: 0)
+                return (deptRow < deptArr.count && secRow < deptArr[deptRow].sections.count) ? deptArr[deptRow].sections[secRow].courses.count : 0
+            }
         }
         return 0 // shouldn't happen
     }
@@ -62,14 +62,13 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             return deptArr[row].name
         } else if pickerView == coursePicker {
             // TODO: implement coursePicker
-            
-            /*if component == 0 {
-                let dRow = deptPicker.selectedRow(inComponent: 0)
+            let dRow = deptPicker.selectedRow(inComponent: 0)
+            if component == 0 {
                 return deptArr[dRow].sections[row].sectionNum
             } else if component == 1 {
                 let sectionRow = coursePicker.selectedRow(inComponent: 0)
-                return courseArr[sectionRow].cid
-            }*/
+                return deptArr[dRow].sections[sectionRow].courses[row].cid
+            }
         }
         return nil
     }
@@ -85,13 +84,22 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
                 break
             }
             populateCourses(endpoint: .courseList(selectedCampus!.rawValue))
-            //updatePicker(picker: 1)
         } else if pickerView == deptPicker {
             // assumes already populated sections (and courses)
             let params = ["dept" : deptArr[row].name]
             populateCourses(endpoint: .getSingle(selectedCampus!.rawValue), params: params)
+        } else if pickerView == coursePicker {
+            if component == 0 {
+                // section
+                pickerView.reloadComponent(1)
+            } else if component == 1 {
+                textView.text = ""
+                let dRow = deptPicker.selectedRow(inComponent: 0)
+                let sRow = pickerView.selectedRow(inComponent: 0)
+                //let temp = deptArr[dRow].sections[sRow].courses[row]
+                //textView.text! += temp as CustomStringConvertible as! String
+            }
         }
-        //populateCourses()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
