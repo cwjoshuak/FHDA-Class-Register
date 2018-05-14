@@ -29,27 +29,33 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView == campusPicker {
+        
+        switch(pickerView) {
+        case campusPicker:
             return 2
-        } else if pickerView == deptPicker {
+        case deptPicker:
             return deptArr.count
-        } else if pickerView == coursePicker {
-            // TODO: implement coursePicker
+        case coursePicker:
             let deptRow = deptPicker.selectedRow(inComponent: 0)
-            if component == 0 {
+            switch(component) {
+            case 0:
                 // section component
                 return (deptRow < deptArr.count) ? deptArr[deptRow].sections.count : 0
-            } else if component == 1 {
+            case 1:
                 // courses component
                 let secRow = pickerView.selectedRow(inComponent: 0)
                 return (deptRow < deptArr.count && secRow < deptArr[deptRow].sections.count) ? deptArr[deptRow].sections[secRow].courses.count : 0
+            default:
+                return 0 // shouldn't happen
             }
+        default:
+            return 0 // shouldn't happen
         }
-        return 0 // shouldn't happen
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
 
-        if pickerView == campusPicker {
+        switch(pickerView) {
+        case campusPicker:
             switch(row) {
             case 0:
                 return Course.Campus.fh.rawValue.uppercased()
@@ -58,22 +64,27 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             default:
                 return nil
             }
-        } else if pickerView == deptPicker {
+        case deptPicker:
             return deptArr[row].name
-        } else if pickerView == coursePicker {
-            // TODO: implement coursePicker
+        case coursePicker:
             let dRow = deptPicker.selectedRow(inComponent: 0)
-            if component == 0 {
+            switch(component) {
+            case 0:
                 return deptArr[dRow].sections[row].sectionNum
-            } else if component == 1 {
+            case 1:
                 let sectionRow = coursePicker.selectedRow(inComponent: 0)
                 return deptArr[dRow].sections[sectionRow].courses[row].cid
+            default:
+                return nil
             }
+        default:
+            return nil
         }
-        return nil
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView == campusPicker {
+        switch(pickerView) {
+        case campusPicker:
             print(row)
             switch(row) {
             case 0:
@@ -84,21 +95,26 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
                 break
             }
             populateCourses(endpoint: .courseList(selectedCampus!.rawValue))
-        } else if pickerView == deptPicker {
+        case deptPicker:
             // assumes already populated sections (and courses)
             let params = ["dept" : deptArr[row].name]
             populateCourses(endpoint: .getSingle(selectedCampus!.rawValue), params: params)
-        } else if pickerView == coursePicker {
-            if component == 0 {
+        case coursePicker:
+            switch(component) {
+            case 0:
                 // section
                 pickerView.reloadComponent(1)
-            } else if component == 1 {
+            case 1:
                 textView.text = ""
                 let dRow = deptPicker.selectedRow(inComponent: 0)
                 let sRow = pickerView.selectedRow(inComponent: 0)
                 //let temp = deptArr[dRow].sections[sRow].courses[row]
-                //textView.text! += temp as CustomStringConvertible as! String
+            //textView.text! += temp as CustomStringConvertible as! String
+            default:
+                break
             }
+        default:
+            break
         }
     }
     override func viewDidLoad() {
