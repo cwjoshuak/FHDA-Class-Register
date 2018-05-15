@@ -108,8 +108,8 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
                 textView.text = ""
                 let dRow = deptPicker.selectedRow(inComponent: 0)
                 let sRow = pickerView.selectedRow(inComponent: 0)
-                //let temp = deptArr[dRow].sections[sRow].courses[row]
-            //textView.text! += temp as CustomStringConvertible as! String
+                let course = deptArr[dRow].sections[sRow].courses[row]  //[row]
+                textView.text! += course.description
             default:
                 break
             }
