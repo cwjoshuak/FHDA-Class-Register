@@ -15,7 +15,8 @@ public struct Course {
         case fh = "FH"
         case da = "DA"
         case fc = "FC"
-        case def = "DO"
+        case bad = "DO"
+        case bad1 = "FO"
     }
     
     enum Days : String {
