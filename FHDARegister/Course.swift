@@ -12,6 +12,7 @@ public struct Course {
     
     // MARK: Properties
     enum Campus : String {
+        case test = "test"
         case fh = "FH"
         case da = "DA"
         case fc = "FC"
@@ -26,7 +27,7 @@ public struct Course {
         case Th
         case F
         case S
-        case Su
+        case U
         case TBA
     }
 

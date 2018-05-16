@@ -11,14 +11,15 @@ import Alamofire
 
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
+    @IBOutlet weak var debugSwitch: UISwitch!
+    @IBOutlet weak var debugLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     
     @IBOutlet weak var campusPicker: UIPickerView!
     @IBOutlet weak var deptPicker: UIPickerView!
-    
     @IBOutlet weak var coursePicker: UIPickerView!
-    var deptArr : [Dept] = []
-    var courseArr : [Course] = []
+    var deptArr = [Dept]()
+    var courseArr = [Course]()
     let shard = RequestController.shared
     var selectedCampus : Course.Campus?
     
@@ -32,7 +33,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         switch(pickerView) {
         case campusPicker:
-            return 2
+            if debugSwitch.isOn {
+                return 1
+            } else {
+                return 2
+            }
         case deptPicker:
             return deptArr.count
         case coursePicker:
@@ -53,9 +58,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         }
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-
         switch(pickerView) {
         case campusPicker:
+            if debugSwitch.isOn {
+                return Course.Campus.test.rawValue.uppercased()
+            }
             switch(row) {
             case 0:
                 return Course.Campus.fh.rawValue.uppercased()
@@ -86,6 +93,10 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         switch(pickerView) {
         case campusPicker:
             print(row)
+            if debugSwitch.isOn {
+                selectedCampus = Course.Campus.test
+                return
+            }
             switch(row) {
             case 0:
                 selectedCampus = Course.Campus.fh
@@ -120,13 +131,15 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        selectedCampus = Course.Campus.fh
+        selectedCampus = debugSwitch.isOn ? Course.Campus.test : Course.Campus.fh
         campusPicker.dataSource = self
         campusPicker.delegate = self
         deptPicker.dataSource = self
         deptPicker.delegate = self
         coursePicker.dataSource = self
         coursePicker.delegate = self
+        debugSwitch.addTarget(self, action: #selector(self.debugSwitched(mySwitch:)), for: UIControlEvents.valueChanged)
+        
         populateCourses(endpoint: .courseList(selectedCampus!.rawValue))
     }
 
@@ -158,6 +171,15 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
                 self.deptPicker.reloadAllComponents()
             }
         }
+    }
+    @objc func debugSwitched(mySwitch: UISwitch) {
+        print(mySwitch.isOn)
+        selectedCampus = debugSwitch.isOn ? Course.Campus.test : Course.Campus.fh
+        deptArr.removeAll()
+        populateCourses(endpoint: .courseList(selectedCampus!.rawValue))
+        campusPicker.reloadComponent(0)
+        deptPicker.reloadComponent(0)
+        coursePicker.reloadAllComponents()
     }
 }
 
